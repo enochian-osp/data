@@ -17,7 +17,7 @@ function pronounciation(word, logArray) {
   let syllableEnd = false;
 
   for (let i=0; i < word.length; i++) {
-    newSyllable = !syllableEnd;
+    newSyllable = out.length ? syllableEnd : true;
 
     if (syllableEnd) {
       out += '-';
@@ -57,28 +57,15 @@ function pronounciation(word, logArray) {
       }
     }
 
-    // Inferred "H" Rule
-    // H after a vowel ends syllable, or after a consontant that will be 'eh'
-    if (next==='h') {
-      if (isVowel(current))
-        out += current + 'h';
-      else
-        out += current + 'eh';
+    // Inferred: Some consonants can end a syllable
+    if (newSyllable && isVowel(current) && ['h','n','f'].includes(next)) {
+      out += currentOut + (next==='f'?'ff':next);
       i++;
       syllableEnd = true;
       continue;
     }
-    /*
-    if (current==='o' && next==='h') {
-      log('H')
-      out += current + 'h';
-      i++;
-      syllableEnd = true;
-      continue;
-    }
-    */
 
-    if (current === 'f' && isVowel(next) && nextNext === 'f') {
+    if (current === 'f' && next==='a' && nextNext === 'f') {
       out += 'eff';
       syllableEnd = true;
       continue;
@@ -107,7 +94,7 @@ function pronounciation(word, logArray) {
    */
 
     // Rule 3: The word is divided into syllables
-    if (!isVowel(current) && isVowel(next)) {
+    if (newSyllable && !isVowel(current) && isVowel(next)) {
       // TODO, something, 3 letters, depends on next?
       out += currentOut;
       continue;
@@ -123,7 +110,7 @@ function pronounciation(word, logArray) {
 
     // Inferred: 'F','L','M','N' on it's own is 'ef','el','em','en',etc.
     if (['f','l','m','n'].includes(current) && !isVowel(next)) {
-      out += 'e' + currentOut;
+      out += 'e' + currentOut + (current==='f'?'f':'');
       syllableEnd = true;
       continue;
     }
@@ -166,7 +153,13 @@ function pronounciation(word, logArray) {
       out += currentOut;
     } else {
       out += currentOut + 'eh';
+
+      // Inferred "H" Rule
+      // H after a vowel ends syllable, or after a consontant that will be 'eh'
+      // i.e. eh-heh becomes eh, so skip the 'h'
+      if (next === 'h') i++;
     }
+
     syllableEnd = true;
   }
 

@@ -17,7 +17,7 @@ const _spec = {
 
 function runTestsWithSpec(spec) {
   for (const [word, ideal] of Object.entries(spec)) {
-    test(word, () => {
+    test(`${word} > ${ideal}`, () => {
       const debug = [];
       const result = pronounciation(word, debug);
       expect(result, debug.join('\n')).toBe(ideal);
@@ -39,6 +39,13 @@ describe('F', () => {
     SONF: 'soh-en-eff',
     FIFALZ: 'fee-fal-zod',
     EFAFAFE: 'eff-aff-aff-eh',
+  });
+});
+
+describe('U', () => {
+  runTestsWithSpec({
+    DLUGAR: 'deh-lu-gar',
+    LUSD: 'luh-ess-deh',
   });
 });
 
