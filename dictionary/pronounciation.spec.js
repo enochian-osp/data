@@ -58,10 +58,14 @@ describe('L', () => {
 
 describe('dictionary', () => {
   const spec = {};
-  const exceptions = [];
+  const exceptions = [
+    '',
+    'word',
+    'ZIZOP'  // zodee-zodoh-pah and not -peh
+  ];
   parse(fs.readFileSync('dictionary/dictionary.csv', 'utf8'))
     .forEach(([word, pronounciation]) => {
-      if (pronounciation && !['','word'].includes(word))
+      if (pronounciation && !exceptions.includes(word))
         spec[word] = pronounciation.toLowerCase();
     });
   runTestsWithSpec(spec);
