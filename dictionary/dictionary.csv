@@ -844,7 +844,7 @@
 "GEMEGANZA",,"YOUR WILL BE DONE","WE",,,
 "GEMNIMB",,"PART IN TEX","WE",,,
 "GEMPH",,"without the water","WE","Liber Loagaeth",,
-"gemph",,"yield","WE","Liber Loagaeth",,
+"GEMPH",,"yield","WE","Liber Loagaeth",,
 "GENA",,"from the Lord of Hosts (with)","WE","Liber Loagaeth",,
 "GENADOL",,"PART IN DEO","WE",,,
 "GENILE",,"from the Lord of Hosts, the Son of Son of Light","WE","Liber Loagaeth",,
@@ -888,7 +888,6 @@
 "GNETAAB",,"GOVERNMENT, YOUR GOVERNMENTS","WE",,,
 "GNONP",,"GARNISH, I GARNISHED","WE",,,
 "GO (LE)",,"Speaks","WE","Liber Loagaeth",,
-"goddess’",,,"WE",,,
 "GOHED",,"ONE, EVERLASTING","WE",,,
 "GOHEL",,"SAY, SAYS THE FIRST","WE",,,
 "GOHIA",,"SAY, WE SAY","WE",,,
@@ -1740,7 +1739,7 @@
 "PIR",,"HOLY ONES","WE",,,
 "PIRIPSON",,"HEAVEN, THE THIRD","WE",,,
 "PL",,"partakers, ‘as many’","WE","Holy Table of Practice perimeter",,
-"PLAPI","peh-lah-peh-lee","users, partakers","EMPM",,,100
+"PLAPLI","peh-lah-peh-lee","users, partakers","EMPM",,,100
 "PLAPLI",,"PARTAKERS","WE",,,
 "PLIGNASE",,"The eternal cry","WE","Liber Loagaeth",,
 "PLOSI",,"AS MANY","WE",,,
@@ -2054,8 +2053,8 @@
 "TRINT",,"SIT","WE",,,
 "TROF",,"BUILDING, A","WE",,,
 "TULE",,"'It ends with [the goddess] El’; ‘Completed by the goddess’ or ‘Ending with the goddess’","WE","Table of 12",,
-"TULE",,"TULE Name from T12Sqr","WE",,,
-"TULE",,"ILRO LETTERS OF T12SQR","WE",,,
+"TULE",,"Name from T12Sqr","WE",,,
+"TULE ILRO",,"LETTERS OF T12SQR","WE",,,
 "TURBS",,"BEAUTY, IN THEIR","WE",,,
 "TUSTAX",,"GOING","WE",,,
 "TZESTS",,"Being of the 4","WE",,,
@@ -2278,7 +2277,7 @@
 "ZOM",,"THIRD AETHYR","WE",,,
 "ZOMD",,"IN THE MIDST","WE",,,
 "ZON","zodoh-en","form","EMPM",,,83
-"ZON","zod-en","form","EMPM",,,89
+"ZON","zodoh-en","form","EMPM",,"In the book this appears as “zod-en”, which is clearly wrong, but also, the word appears with the correct pronounciation for gematria 83.",89
 "ZON-",,"L THE FIRST FORM (Schuler)","WE",,,
 "ZONAC",,"THEY ARE APPARELED","WE",,,
 "ZONG",,"OF THE WINDS","WE",,,

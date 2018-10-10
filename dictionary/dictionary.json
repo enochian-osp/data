@@ -8425,13 +8425,7 @@
         "meaning": "without the water",
         "source": "WE",
         "source2": "Liber Loagaeth"
-      }
-    ],
-    "pronounciations": []
-  },
-  "gemph": {
-    "gematria": [],
-    "meanings": [
+      },
       {
         "meaning": "yield",
         "source": "WE",
@@ -8879,11 +8873,6 @@
         "source2": "Liber Loagaeth"
       }
     ],
-    "pronounciations": []
-  },
-  "goddess’": {
-    "gematria": [],
-    "meanings": [],
     "pronounciations": []
   },
   "GOHED": {
@@ -17157,7 +17146,7 @@
     ],
     "pronounciations": []
   },
-  "PLAPI": {
+  "PLAPLI": {
     "gematria": [
       100
     ],
@@ -17165,6 +17154,10 @@
       {
         "meaning": "users, partakers",
         "source": "EMPM"
+      },
+      {
+        "meaning": "PARTAKERS",
+        "source": "WE"
       }
     ],
     "pronounciations": [
@@ -17173,16 +17166,6 @@
         "source": "EMPM"
       }
     ]
-  },
-  "PLAPLI": {
-    "gematria": [],
-    "meanings": [
-      {
-        "meaning": "PARTAKERS",
-        "source": "WE"
-      }
-    ],
-    "pronounciations": []
   },
   "PLIGNASE": {
     "gematria": [],
@@ -20268,11 +20251,17 @@
         "source2": "Table of 12"
       },
       {
-        "meaning": "TULE Name from T12Sqr",
+        "meaning": "Name from T12Sqr",
         "source": "WE"
-      },
+      }
+    ],
+    "pronounciations": []
+  },
+  "TULE ILRO": {
+    "gematria": [],
+    "meanings": [
       {
-        "meaning": "ILRO LETTERS OF T12SQR",
+        "meaning": "LETTERS OF T12SQR",
         "source": "WE"
       }
     ],
@@ -22507,7 +22496,8 @@
       },
       {
         "meaning": "form",
-        "source": "EMPM"
+        "source": "EMPM",
+        "note": "In the book this appears as “zod-en”, which is clearly wrong, but also, the word appears with the correct pronounciation for gematria 83."
       }
     ],
     "pronounciations": [
@@ -22516,8 +22506,9 @@
         "source": "EMPM"
       },
       {
-        "pronounciation": "zod-en",
-        "source": "EMPM"
+        "pronounciation": "zodoh-en",
+        "source": "EMPM",
+        "note": "In the book this appears as “zod-en”, which is clearly wrong, but also, the word appears with the correct pronounciation for gematria 83."
       }
     ]
   },
