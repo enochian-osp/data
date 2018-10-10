@@ -4,7 +4,7 @@ function isVowel(letter) {
 
 function isVowelish(letter) {
   // 'eff', 'em'
-  return ['a','e','i','o','u','f','m'].includes(letter);
+  return ['a','e','i','o','u','f','m','n'].includes(letter);
 }
 
 function pronounciation(word, logArray) {
@@ -13,9 +13,17 @@ function pronounciation(word, logArray) {
   const log = logArray ? (...args) => logArray.push(args.join(', ')) : () => {};
 
   let out = '';
+  let newSyllable = true;
   let syllableEnd = false;
 
   for (let i=0; i < word.length; i++) {
+    newSyllable = !syllableEnd;
+
+    if (syllableEnd) {
+      out += '-';
+      syllableEnd = false;
+    }
+
     const prev = i > 0 ? word[i-1] : null;
     const current = word[i];
     const next = i < word.length-1 ? word[i+1] : null;
@@ -31,10 +39,6 @@ function pronounciation(word, logArray) {
     }
     */
 
-   if (syllableEnd) {
-     out += '-';
-     syllableEnd = false;
-   }
 
     let currentOut = current;
 
@@ -54,7 +58,17 @@ function pronounciation(word, logArray) {
     }
 
     // Inferred "H" Rule
-    // H after a vowel ends syllable
+    // H after a vowel ends syllable, or after a consontant that will be 'eh'
+    if (next==='h') {
+      if (isVowel(current))
+        out += current + 'h';
+      else
+        out += current + 'eh';
+      i++;
+      syllableEnd = true;
+      continue;
+    }
+    /*
     if (current==='o' && next==='h') {
       log('H')
       out += current + 'h';
@@ -62,6 +76,35 @@ function pronounciation(word, logArray) {
       syllableEnd = true;
       continue;
     }
+    */
+
+    if (current === 'f' && isVowel(next) && nextNext === 'f') {
+      out += 'eff';
+      syllableEnd = true;
+      continue;
+    }
+    /*
+    // Inferred: F at start of word, or after consonant, is pronounced 'eff'
+    if (word === 'fafen' && current==='f')
+      log(current, next, !isVowel(next), isVowel(next), isVowelish(next))
+    if (current === 'f' &&
+        (!isVowel(next) || (isVowel(next) && isVowelish(nextNext)))) {
+      if (!prev)
+        out += 'eff';
+      else
+        out += 'ef';
+      syllableEnd = true;
+      continue;
+    }
+    */
+
+    /*
+   if (isVowel(current) && !isVowel(next)) {
+     out += currentOut + next;
+     i++;
+     continue;
+   }
+   */
 
     // Rule 3: The word is divided into syllables
     if (!isVowel(current) && isVowel(next)) {
@@ -78,19 +121,9 @@ function pronounciation(word, logArray) {
       continue;
     }
 
-    // Inferred: 'L','M','N' on it's own is 'el','em','en',etc.
-    if (['l','m','n'].includes(current) && !isVowel(next)) {
+    // Inferred: 'F','L','M','N' on it's own is 'ef','el','em','en',etc.
+    if (['f','l','m','n'].includes(current) && !isVowel(next)) {
       out += 'e' + currentOut;
-      syllableEnd = true;
-      continue;
-    }
-
-    // Inferred: F at start of word, or after consonant, is pronounced 'eff'
-    if (current === 'f') {
-      if (!prev || !isVowel(next))
-        out += 'eff';
-      else
-        out += 'ff';
       syllableEnd = true;
       continue;
     }

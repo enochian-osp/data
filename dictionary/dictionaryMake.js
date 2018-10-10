@@ -1,9 +1,6 @@
 const fs = require('fs');
 const parse = require('csv-parse/lib/sync');
 
-const words = {};
-let csv, records, obj;
-
 function transform(row, headers) {
   const out = {};
   headers.forEach((header, i) => out[header] = row[i]);
@@ -16,41 +13,37 @@ function rowRef(word) {
   return words[word];
 }
 
-function process(headers, records, source) {
-  records.forEach(row => {
-    row = transform(row, headers);
-    if (!row.word) return;
+const words = {};
+const csv = fs.readFileSync('./dictionary.csv', 'utf8');
+const records = parse(csv, { cast: true });
+const headers = records[0];
+records.shift();
 
-    const entry = rowRef(row.word);
+records.forEach(row => {
+  row = transform(row, headers);
+  if (!row.word) return;
 
-    if (row.gematria && !entry.gematria.includes(row.gematria))
-      entry.gematria.push(row.gematria);
+  const entry = rowRef(row.word);
 
-    if (row.meaning) {
-      obj = { meaning: row.meaning, source };
-      if (row.source) obj.source2 = row.source;
-      if (row.note) obj.note = row.note;
-      entry.meanings.push(obj);
-    }
+  if (row.gematria && !entry.gematria.includes(row.gematria))
+    entry.gematria.push(row.gematria);
 
-    if (row.pronounciation) {
-      obj = { pronounciation: row.pronounciation, source };
-      if (row.source) obj.source2 = row.source;
-      if (row.note) obj.note = row.note;
-      entry.pronounciations.push(obj);
-    } else {
-      // auto
-    }
-  });
-}
+  if (row.meaning) {
+    obj = { meaning: row.meaning, source: row.source };
+    if (row.source2) obj.source2 = row.source2;
+    if (row.note) obj.note = row.note;
+    entry.meanings.push(obj);
+  }
 
-csv = fs.readFileSync('./practicalManual.csv', 'utf8');
-records = parse(csv, { cast: true });
-process(records[0], records.slice(1), 'practicalManual');
-
-csv = fs.readFileSync('./wholeEnochian.csv', 'utf8');
-records = parse(csv, { cast: true });
-process(records[0], records.slice(1), 'wholeEnochian');
+  if (row.pronounciation) {
+    obj = { pronounciation: row.pronounciation, source: row.source };
+    if (row.source2) obj.source2 = row.source2;
+    if (row.note) obj.note = row.note;
+    entry.pronounciations.push(obj);
+  } else {
+    // auto
+  }
+});
 
 const out = JSON.stringify(words, null, 2);
 

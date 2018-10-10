@@ -25,18 +25,37 @@ function runTestsWithSpec(spec) {
   }
 }
 
+describe('merge', () => {
+  runTestsWithSpec({
+    ATH: 'ah-teh',          // not ah-teh-heh
+    FABOAN: 'fah-boh-an'    // not fah-boh-ah-en
+  })
+});
+
+describe('F', () => {
+  runTestsWithSpec({
+    FAFEN: 'eff-aff-en',
+    FABOAN: 'fah-boh-an',
+    SONF: 'soh-en-eff',
+    FIFALZ: 'fee-fal-zod',
+    EFAFAFE: 'eff-aff-aff-eh',
+  });
+});
+
 describe('L', () => {
   runTestsWithSpec({
     VRELP: 'var-el-peh',
-    BALZ: 'bal-zod'
+    BALZ: 'bal-zod',
   })
 });
 
 describe('dictionary', () => {
   const spec = {};
-  parse(fs.readFileSync('dictionary/practicalManual.csv', 'utf8'))
-    .forEach(([_, word, pronounciation]) => spec[word]=pronounciation);
-  delete spec['word'];
-  delete spec[''];
+  const exceptions = [];
+  parse(fs.readFileSync('dictionary/dictionary.csv', 'utf8'))
+    .forEach(([word, pronounciation]) => {
+      if (pronounciation && !['','word'].includes(word))
+        spec[word] = pronounciation.toLowerCase();
+    });
   runTestsWithSpec(spec);
 });
